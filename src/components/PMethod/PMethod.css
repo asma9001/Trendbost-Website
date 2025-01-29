@@ -1,0 +1,172 @@
+.PMethod-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  overflow: auto; 
+}
+
+/* Main payment container */
+.payment-container {
+  width: 100%;
+  max-width: 720px;
+  padding: 20px;
+  border: 1px solid #002f77;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; 
+}
+
+/* Heading container */
+.heading-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Payment Heading */
+.payment-heading {
+  font-size: 26px;
+  font-weight: bold;
+  color: #002f77;
+  text-align: left;
+  margin-top: 7px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.icon-label-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1; 
+}
+
+.payment-icon {
+  font-size: 20px;
+  color: #002f77;
+}
+
+.payment-label {
+  color: #002f77;
+  font-size: 16px;
+}
+
+.payment-method-container {
+  display: flex;
+  flex-direction: column; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.payment-method-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensure delete icon stays on the same line */
+  padding: 10px;
+}
+
+.payment-method-details {
+  width: 100%;
+  margin-top: 10px; /* Add space between method and details */
+}
+
+/* Ensuring delete icon stays on the same line */
+.payment-method-container .icon-label-container {
+  flex-grow: 1;
+}
+
+/* Styling for radio input */
+.payment-option-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.payment-option-label input {
+  margin-right: 10px;
+}
+
+.remove-icon {
+  font-size: 18px;
+  color: #ff0000;
+  cursor: pointer;
+  align-self: center; /* Ensure the delete icon is centered vertically */
+}
+
+/* Back arrow icon */
+.back-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #002f77;
+}
+
+/* Payment details animation */
+.payment-details {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  width: 100%;
+}
+.payment-details-menu{
+  margin-left: 10px;
+}
+.payment-details.show {
+  max-height: 300px;
+  padding: 15px;
+}
+
+.payment-form-row {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.payment-form-group {
+  flex: 1;
+}
+
+.payment-form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button container */
+.PMethod-button-container {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.PMethod-proceed-button, .PMethod-add-method-button {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.PMethod-proceed-button:hover, .PMethod-add-method-button:hover {
+  background-color: #580ea1;
+}

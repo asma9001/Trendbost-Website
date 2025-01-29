@@ -1,0 +1,113 @@
+/* General Container Styles */
+.Payment-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+    background-color: #6938F3;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+/* Left Section Styles */
+.Payment-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.Payment-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    animation: fadeInUp 1.5s forwards;
+}
+
+/* Right Section Styles */
+.Payment-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.Payment-image {
+    max-width: 80%;
+    height: auto;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.footer-Payment {
+    margin-top: 30px;
+}
+
+/* Keyframe animation for the up-and-down effect */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .Payment-wrapper {
+        padding: 15px;
+    }
+
+    .Payment-heading {
+        font-size: 2.5rem;
+    }
+
+    .Payment-image {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .Payment-wrapper {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .Payment-left,
+    .Payment-right {
+        flex: none;
+        width: 100%;
+    }
+
+    .Payment-heading {
+        font-size: 2rem;
+    }
+
+    .Payment-image {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .Payment-wrapper {
+        padding: 10px;
+    }
+
+    .Payment-heading {
+        font-size: 1.8rem;
+    }
+
+    .Payment-image {
+        max-width: 50%;
+    }
+}

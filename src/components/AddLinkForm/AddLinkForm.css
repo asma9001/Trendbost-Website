@@ -1,0 +1,83 @@
+/* AddLinkForm.css */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background: linear-gradient(135deg, white, white);
+  font-family: 'Arial', sans-serif;
+}
+
+.addlink-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 100%;
+}
+
+.addlink-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.addlink-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.addlink-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.addlink-form-group input {
+  padding: 14px 0;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+.addlink-form-group input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.addlink-form-group input:hover {
+  border-color: #6c63ff;
+}
+
+.addlink-form-group input:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.proceed-button {
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proceed-button:hover {
+  background-color: #5a54d1;
+  box-shadow: 0 6px 12px rgba(90, 84, 209, 0.3);
+}

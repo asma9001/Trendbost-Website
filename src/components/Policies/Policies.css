@@ -1,0 +1,176 @@
+/* General Container Styles */
+.privacy-container {
+    background-color: #D2E5FA;
+    padding: 40px 120px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    border-radius: 10px;
+}
+
+/* Heading Styles */
+.privacy-head {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #001F6F;
+    margin-bottom: 10px;
+}
+
+/* Divider Styles */
+.privacy-para {
+    text-align: center;
+    color: #001F6F;
+    font-weight: 500;
+}
+.privacy-paragraph{
+    text-align: justify;
+    color: black;
+}
+
+/* Content Area Styles */
+.privacy-content {
+    color: black;
+    text-align: left;
+}
+
+/* Subheadings */
+.privacy-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #001F6F;
+    margin-top: 20px;
+}
+.privacy-content h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #001F6F;
+    margin-top: 20px;
+}
+
+/* Paragraphs */
+.privacy-content p {
+    font-size: 1rem;
+    color: black;
+    margin: 10px 0;
+}
+
+/* List Styles */
+.privacy-content ul {
+    padding-left: 20px;
+}
+
+.privacy-content li {
+    margin-bottom: 10px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .privacy-container {
+        padding: 30px 80px; /* Decrease padding */
+    }
+
+    .privacy-head {
+        font-size: 2rem; /* Adjust heading font size */
+    }
+
+    .privacy-para {
+        font-size: 0.9rem; /* Adjust paragraph font size */
+    }
+
+    .privacy-paragraph {
+        font-size: 0.95rem; /* Adjust the body text size */
+    }
+
+    .privacy-content h2 {
+        font-size: 1.3rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content h5 {
+        font-size: 0.95rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content p {
+        font-size: 0.95rem; /* Adjust body paragraph font size */
+    }
+}
+
+/* For Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .privacy-container {
+        padding: 20px 40px; /* Decrease padding even further for mobile */
+    }
+
+    .privacy-head {
+        font-size: 1.7rem; /* Adjust heading font size */
+    }
+
+    .privacy-para {
+        font-size: 0.85rem; /* Adjust paragraph font size */
+    }
+
+    .privacy-paragraph {
+        font-size: 0.9rem; /* Adjust the body text size */
+    }
+
+    .privacy-content h2 {
+        font-size: 1.2rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content h5 {
+        font-size: 0.9rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content p {
+        font-size: 0.9rem; /* Adjust body paragraph font size */
+    }
+
+    /* Ensure lists are appropriately styled */
+    .privacy-content ul {
+        padding-left: 15px; /* Adjust list indentation */
+    }
+
+    .privacy-content li {
+        margin-bottom: 8px; /* Adjust list item spacing */
+    }
+}
+
+/* For Extra Small Phones (max-width: 576px) */
+@media (max-width: 576px) {
+    .privacy-container {
+        padding: 15px 20px; /* Further decrease padding for small screens */
+    }
+
+    .privacy-head {
+        font-size: 1.5rem; /* Adjust heading font size */
+    }
+
+    .privacy-para {
+        font-size: 0.8rem; /* Adjust paragraph font size */
+    }
+
+    .privacy-paragraph {
+        font-size: 0.85rem; /* Adjust body text size */
+    }
+
+    .privacy-content h2 {
+        font-size: 1.1rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content h5 {
+        font-size: 0.85rem; /* Adjust subheading font size */
+    }
+
+    .privacy-content p {
+        font-size: 0.85rem; /* Adjust body paragraph font size */
+    }
+
+    .privacy-content ul {
+        padding-left: 10px; /* Adjust list indentation */
+    }
+
+    .privacy-content li {
+        margin-bottom: 6px; /* Adjust list item spacing */
+    }
+}

@@ -1,0 +1,140 @@
+/* ServiceInfo Component Background */
+.info-component-bg {
+    background-color: #D2E5FA;
+    padding: 30px 0;
+}
+
+/* Main Heading */
+.info-main-heading {
+    color: #001F6F;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Sub Heading */
+.info-sub-heading {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #001F6F;
+}
+
+/* Left Column Styles */
+.info-column-heading {
+    color: #001F6F;
+    font-weight: 600;
+    font-size:4.5rem;
+    margin-bottom: 10px;
+}
+
+.info-column-paragraph {
+    text-align: justify;
+    margin: 0 20px;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Vertical Divider */
+.info-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.vertical-line {
+    width: 0.5px;
+    height: 100%;
+    background-color: black;
+}
+
+/* Right Column Styles */
+.info-right-column .info-right-section {
+    margin-bottom: 25px;
+}
+
+.info-section-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #001F6F;
+}
+
+.info-section-paragraph {
+    font-size: 1rem;
+    margin: 10px 0;
+    text-align: justify;
+    color: black;
+    font-weight: 500;
+}
+
+/* Horizontal Line */
+hr {
+    border-top: 1px solid #333;
+    margin: 15px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .info-main-heading {
+        font-size: 2rem;
+    }
+
+    .info-sub-heading {
+        font-size: 1.2rem;
+    }
+
+    .info-left-column,
+    .info-right-column {
+        text-align: center;
+    }
+
+    .info-column-heading {
+        font-size: 4rem; /* Adjust for smaller screens */
+        margin: 0 auto;
+    }
+
+    .info-column-paragraph {
+        margin: 0 10px;
+    }
+
+    .info-right-column {
+        margin-top: 30px;
+    }
+
+    .info-section-heading {
+        font-size: 2rem;
+    }
+
+    .info-section-paragraph {
+        font-size: 0.9rem;
+    }
+
+    .info-divider {
+        display: none; /* Hide divider on smaller screens */
+    }
+
+    .vertical-line {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-column-heading {
+        font-size: 3rem;
+    }
+
+    .info-section-heading {
+        font-size: 1.8rem;
+    }
+
+    .info-component-bg {
+        padding: 20px 0;
+    }
+
+    .info-column-paragraph,
+    .info-section-paragraph {
+        font-size: 0.8rem;
+        margin: 0 10px;
+    }
+}

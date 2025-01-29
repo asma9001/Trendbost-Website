@@ -1,0 +1,103 @@
+/* General Container Styles */
+.AddLink-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #6938F3;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+  }
+  
+  /* Left Section Styles */
+  .AddLink-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .AddLink-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    animation: fadeInUp 1.5s forwards;
+  }
+  
+  .footer-AddLink {
+    margin-top: 30px;
+  }
+  
+  /* Keyframe animation for the up-and-down effect */
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .Payment-wrapper {
+      height: 350px;
+    }
+  
+    .Payment-heading {
+      font-size: 2.7rem;
+    }
+  
+    .Payment-image {
+      max-width: 70%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Payment-wrapper {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+    }
+  
+    .Payment-left,
+    .Payment-right {
+      flex: none;
+      width: 100%;
+      height: auto;
+    }
+  
+    .Payment-heading {
+      font-size: 2rem;
+    }
+  
+    .Payment-image {
+      max-width: 60%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Payment-wrapper {
+      padding: 15px;
+    }
+  
+    .Payment-heading {
+      font-size: 1.8rem;
+    }
+  
+    .Payment-image {
+      max-width: 90%;
+    }
+  
+    .footer-Payment {
+      margin-top: 20px;
+    }
+  }
+  

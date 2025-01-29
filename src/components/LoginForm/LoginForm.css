@@ -1,0 +1,237 @@
+.loginForm_container {
+  background: #6938F3;
+  padding: 40px;
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loginForm_leftColumn, .loginForm_rightColumn {
+  flex: 1;
+  padding: 20px;
+}
+
+.loginForm_heading {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.loginForm_formGroup {
+  margin-bottom: 20px;
+}
+
+.loginForm_label {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.loginForm_input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+}
+
+.loginForm_passwordContainer {
+  position: relative;
+}
+
+.loginForm_passwordContainer input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 30px 10px 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+}
+
+.loginForm_passwordToggleIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
+}
+
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-group-login {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 20px;
+}
+
+.checkbox-login {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+}
+.checkbox-label-login {
+  color: white;
+  cursor: pointer;
+  font-weight: normal;
+  margin: 0; 
+}
+/* Forgot Password Link */
+.loginForm_forgot {
+  font-size: 0.9rem;
+  color: #DB46CD;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.loginForm_forgot:hover {
+  color: #f0a5e4;
+}
+
+/* Submit Button */
+.loginForm_submitButton {
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+  color: #6A1B9A;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.loginForm_submitButton:hover {
+  background-color: #f1f1f1;
+}
+
+.loginForm_signupLink {
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loginForm_signupText {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loginForm_signupText:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.loginForm_rightColumn img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0;
+  animation: loginForm_moveUpDown 2s ease-in-out infinite;
+}
+
+/* Keyframe animation for the up-and-down effect */
+@keyframes loginForm_moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+
+/* For tablets (portrait) and smaller screens */
+@media (max-width: 1024px) {
+  .loginForm_container {
+    flex-direction: column;
+    padding: 20px; 
+  }
+
+  .loginForm_leftColumn, .loginForm_rightColumn {
+    flex: 1 0 100%;
+    margin-bottom: 20px;
+  }
+
+  .loginForm_rightColumn {
+    display: none; 
+  }
+
+  .loginForm_heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .loginForm_input {
+    height: 35px;
+    font-size: 0.9rem; 
+  }
+
+  .loginForm_submitButton {
+    font-size: 1rem;
+  }
+
+  .loginForm_forgot {
+    font-size: 0.85rem;
+  }
+
+  .loginForm_signupLink {
+    font-size: 0.9rem;
+  }
+
+  .loginForm_signupText {
+    font-size: 0.9rem;
+  }
+}
+
+/* For very small screens (mobile) */
+@media (max-width: 768px) {
+  .loginForm_page {
+    padding: 0 10px; 
+  }
+
+  .loginForm_container {
+    padding: 20px; 
+    gap: 0;
+  }
+
+  .loginForm_leftColumn, .loginForm_rightColumn {
+    padding: 10px; 
+  }
+
+  .loginForm_input {
+    font-size: 0.9rem;
+  }
+
+  .loginForm_submitButton {
+    font-size: 0.9rem; 
+  }
+
+  .loginForm_heading {
+    font-size: 1.8rem;
+  }
+}

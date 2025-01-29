@@ -1,0 +1,25 @@
+.Checkout-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #6938F3;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+.Checkout-left{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.Checkout-heading{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    animation: fadeInUp 1.5s forwards;
+}

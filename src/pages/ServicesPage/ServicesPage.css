@@ -1,0 +1,156 @@
+/* General Container Styles */
+.servicePage-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    background-color: #6938f3;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    z-index: -1;
+  }
+  .serv-particles-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 580px;
+    overflow: hidden;
+  }
+  
+  /* Left Section Styles */
+  .servicePage-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .servicePage-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    animation: fadeInTop 1s forwards;
+  }
+  
+  .servicePage-paragraph {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+    animation: fadeInTop 3s  forwards;
+  }
+  
+  /* Right Section Styles */
+  .servicePage-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .servicePage-image {
+    max-width: 80%;
+    height: auto;
+    animation: moveUpDown 2s ease-in-out infinite;
+  }
+  
+  /* Keyframe Animations */
+@keyframes moveUpDown {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .servicePage-wrapper {
+      padding: 15px;
+  }
+
+  .servicePage-heading {
+      font-size: 2.5rem;
+  }
+
+  .servicePage-paragraph {
+      font-size: 1rem;
+  }
+
+  .servicePage-image {
+      max-width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicePage-wrapper {
+      flex-direction: column;
+      height: auto; /* Adapts to content */
+      text-align: center;
+  }
+
+  .servicePage-left,
+  .servicePage-right {
+      flex: none;
+      width: 100%;
+  }
+
+  .servicePage-heading {
+      font-size: 2rem;
+  }
+
+  .servicePage-paragraph {
+      font-size: 0.9rem;
+  }
+
+  .servicePage-image {
+      max-width: 60%;
+      margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicePage-wrapper {
+      padding: 10px;
+  }
+
+  .servicePage-heading {
+      font-size: 1.8rem;
+  }
+
+  .servicePage-paragraph {
+      font-size: 0.85rem;
+  }
+
+  .servicePage-image {
+      max-width: 50%;
+  }
+}

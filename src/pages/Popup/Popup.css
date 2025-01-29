@@ -1,0 +1,102 @@
+General container styling
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%; 
+    background-color: #D2E5FA;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  .div-pop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%; 
+    background-color: #D2E5FA;
+  }
+  /* Card styling */
+  .pop-payment-card {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Popup effect */
+  .pop-payment-card.popup {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Icon styling */
+  .pop-payment-icon {
+    background-color: #4caf50;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Tick animation */
+  .tick-animate path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    stroke: white;
+    stroke-width: 2;
+    fill: none;
+    animation: draw 1s ease-in-out forwards;
+  }
+  
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  /* Title styling */
+  .pop-payment-title {
+    font-size: 24px;
+    color: #6a0dad;
+    margin-bottom: 10px;
+  }
+  
+  /* Message styling */
+  .pop-payment-message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Button styling */
+  .pop-payment-button {
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pop-payment-button:hover {
+    background-color: #43a047;
+  }
+  

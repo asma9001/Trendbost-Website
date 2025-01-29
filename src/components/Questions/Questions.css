@@ -1,0 +1,125 @@
+/* Main Container */
+.faq-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #D2E5FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.faq-header {
+  color: #001F6F;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+/* Accordion Wrapper */
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Individual Accordion Container */
+.faq-accordion {
+  width: 100%;
+  background-color: #F9F5F2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  border-radius: 5px;
+  transition: opacity 0.3s ease;
+}
+
+/* Question Styling */
+.faq-question {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #F9F5F2;
+  transition: background-color 0.3s ease;
+}
+
+/* Accordion Content */
+.faq-answer {
+  background-color: white;
+  padding: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.faq-question:hover {
+  background-color: #f9f2ed;
+}
+
+/* Icon Styling */
+.icon {
+  font-size: 1.5rem;
+  color: black;
+  transition: transform 0.3s ease;
+  width: 40px;
+  height: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .faq-header {
+    font-size: 2rem;
+  }
+
+  .faq-accordion {
+    padding: 15px;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+  }
+
+  .faq-answer {
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .faq-accordion {
+    padding: 10px;
+  }
+
+  .faq-question {
+    font-size: 0.9rem;
+  }
+
+  .faq-answer {
+    font-size: 0.8rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+    width: 25px;
+    height: 25px;
+  }
+}

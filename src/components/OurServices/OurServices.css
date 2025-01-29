@@ -1,0 +1,92 @@
+/* Container max width */
+.social-media-container {
+  max-width: 1200px;
+}
+
+/* Main Heading */
+.heading {
+  color: darkblue;
+  font-weight: bold;
+}
+
+/* Justify text */
+.text-justify {
+  text-align: justify;
+  color: black;
+  font-weight: 500;
+}
+
+.description {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Platform logo styles */
+.platform-logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.carousel-item-wrapper{
+  margin: 0;
+  padding: 0;
+}
+/* Card styles */
+.card-with-border {
+  max-width: 350px;
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-with-border:hover {
+  transform: translateY(-5px); 
+}
+
+/* Card Body Text */
+.description-text {
+  min-height: 70px; 
+  color: #363636;
+  font-weight: 450;
+}
+
+/* Button Alignment */
+.card-btn {
+  margin-top: auto; 
+}
+
+/* Carousel item wrapper with margin */
+.carousel-item-wrapper {
+  flex: 0 0 30%;
+  margin: 0 1px; 
+}
+
+/* Custom arrow styles */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.custom-left-arrow {
+  left: 1px; 
+}
+
+.custom-right-arrow {
+  right: 1px; 
+}

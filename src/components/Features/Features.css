@@ -1,0 +1,92 @@
+/* Features Grid Section Styling */
+.features-grid-section {
+  background-color: white;
+  padding: 50px 0;
+}
+
+/* Main Heading Styling */
+.features-grid-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: navy;
+}
+
+/* Feature Grid Box Styling */
+.feature-grid-box {
+  background-color: #FBE0DF;
+  border: 1px solid #ddd;
+  border-radius: 0 30px;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon Circle Styling */
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Blue Background for Icon Circle */
+.blue-bg {
+  background-color: #001F6F;
+  color: white;
+}
+
+/* Pink Background for Icon Circle */
+.pink-bg {
+  background-color: #DB46CD;
+  color: white;
+}
+
+/* Feature Icon */
+.feature-icon {
+  font-size: 1.2rem;
+}
+
+/* Feature Box Heading */
+.feature-box-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: navy;
+  margin-top: 40px;
+}
+
+/* Feature Box Paragraph */
+.feature-box-paragraph {
+  font-size: 0.9rem;
+  color: black;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feature-grid-box {
+    min-height: auto;
+    margin-bottom: 30px;
+  }
+
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

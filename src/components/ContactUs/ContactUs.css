@@ -1,0 +1,250 @@
+/* General Section */
+.contactus-section {
+  background-color: #f9f9f9;
+  padding: 50px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactus-container {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Heading */
+.contactus-heading {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #001F6F;
+  margin-bottom: 20px;
+}
+
+/* Form and Info Columns */
+.contactus-form-column,
+.contactus-info-column {
+  padding: 25px;
+}
+
+/* Form Heading */
+.contactus-form-heading {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #DB46CD;
+  margin-bottom: 5px;
+}
+
+.contactus-description {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  color: black;
+}
+
+/* Inputs */
+.contactus-form-group {
+  margin-bottom: 15px;
+}
+
+.contactus-label {
+  color: black;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contactus-input {
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.contactus-submit-btn {
+  width: 100%;
+  height: 45px;
+  background-color: #001F6F;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.contactus-submit-btn:hover {
+  background-color: #0036a6;
+}
+
+/* Image Styling */
+.contactus-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  animation: contactus-moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes contactus-moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Contact Info */
+.contactus-info {
+  margin-top: 20px;
+}
+
+.contactus-info-left .contactus-info-item {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.contactus-icon {
+  font-size: 1.4rem;
+  color: #001F6F;
+
+}
+
+.contactus-social-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  background-color: #D2E5FA;
+  padding: 8px;
+  border-radius: 10px 0 0 10px;
+  width: 50px;
+  height: 125px;
+  flex-direction: column;
+
+}
+
+.contactus-social-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  padding: 8px;
+  background-color: #001F6F;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.contactus-social-icon:hover {
+  color: white;
+  background-color: #02298b;
+}
+
+/* Responsive Styles */
+
+/* Medium devices - tablets */
+@media (max-width: 1024px) {
+  .contactus-form-column,
+  .contactus-info-column {
+    padding: 15px;
+  }
+
+  .contactus-heading {
+    font-size: 2rem;
+  }
+
+  .contactus-form-heading {
+    font-size: 1.6rem;
+  }
+
+  .contactus-description {
+    font-size: 0.9rem;
+  }
+
+  .contactus-social-icon {
+    font-size: 1rem;
+  }
+}
+
+/* Small devices - tablets & mobile devices */
+@media (max-width: 768px) {
+  .contactus-container {
+    padding: 15px;
+  }
+
+  .contactus-heading {
+    font-size: 1.8rem;
+  }
+
+  .contactus-form-column,
+  .contactus-info-column {
+    padding: 10px;
+  }
+
+  .contactus-form-heading {
+    font-size: 1.5rem;
+  }
+
+  .contactus-social-icon {
+    font-size: 0.9rem;
+  }
+
+  .contactus-image {
+    margin: 0;
+  }
+}
+
+/* Adjusting location and social icon container responsiveness for mobile */
+@media (max-width: 480px) {
+  .contactus-info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactus-info-left {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .contactus-info-item {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contactus-social-icons {
+    display: flex;
+    flex-direction: row; /* Align icons horizontally */
+    gap: 8px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+
+  .contactus-social-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+}
+

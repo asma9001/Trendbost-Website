@@ -1,0 +1,125 @@
+/* Main Testimonial Wrapper */
+.testimonials-main-wrapper {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 40px 0;
+  flex-direction: column;
+}
+
+/* Container for Testimonials */
+.testimonial-div {
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Testimonial Carousel Container */
+.testimonials-container {
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #001F6F;
+  border-radius: 10px;
+  width: 100%;
+  margin: auto;
+}
+
+/* Title of Testimonials */
+.testimonials-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Individual Testimonial Card */
+.testimonial-card {
+  background-color: #001F6F;
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 300px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: auto;
+}
+
+/* Testimonial Image */
+.testimonial-image {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center top;
+  border: 5px solid #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Rating Badge */
+.rating-badge {
+  background: #ffffff;
+  color: #00457f;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Mobile and Tablet Responsiveness */
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 100%;
+
+  }
+
+  .testimonial-image {
+    margin-left: 60px;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonial-card {
+    align-items: center;
+  }
+  .testimonial-image {
+    margin-left: 67px;
+    width: 130px;
+    height: 130px;
+  }
+  .rating-badge{
+    margin-left: 40px;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 450px) {
+  .testimonial-card {
+    align-items: center;
+  }
+  .testimonial-image {
+    margin-left: 40px;
+    width: 100px;
+    height: 100px;
+  }
+  .rating-badge{
+    margin-left: 30px;
+  }
+
+  p {
+    font-size: 0.7rem;
+  }
+}

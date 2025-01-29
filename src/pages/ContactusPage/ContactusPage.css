@@ -1,0 +1,131 @@
+/* General Container Styles */
+.contactus-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+  width: 100%;
+  background-color: #6938F3;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  z-index: -1;
+}
+
+.contactus-particles-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 84vh;
+  overflow: hidden;
+}
+
+/* Left Section Styles */
+.contactus-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.contactus-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  animation: fadeInUp 1.5s forwards;
+}
+
+/* Right Section Styles */
+.contactus-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.contactus-image {
+  max-width: 80%;
+  height: auto;
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+.footer-contactus {
+  margin-top: 30px;
+}
+
+/* Keyframe animation for the up-and-down effect */
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .contactus-wrapper {
+    height: 350px;
+  }
+
+  .contactus-heading {
+    font-size: 2.7rem;
+  }
+
+  .contactus-image {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactus-wrapper {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 15px;
+  }
+
+  .contactus-left,
+  .contactus-right {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .contactus-heading {
+    font-size: 2rem;
+  }
+
+  .contactus-image {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactus-wrapper {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+  }
+
+  .contactus-heading {
+    font-size: 1.8rem;
+  }
+
+  .contactus-image {
+    max-width: 90%;
+  }
+
+  .footer-contactus {
+    margin-top: 20px;
+  }
+}

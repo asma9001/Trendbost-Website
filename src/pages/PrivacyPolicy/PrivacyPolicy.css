@@ -1,0 +1,132 @@
+/* General Container Styles */
+.privacy-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+    background-color: #6938F3;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    z-index: -1;
+  }
+  
+  .policy-particles-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 84vh;
+    overflow: hidden;
+  }
+  
+  /* Left Section Styles */
+  .privacy-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .privacy-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    animation: fadeInUp 1.5s forwards;
+  }
+  
+  /* Right Section Styles */
+  .privacy-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  .privacy-image {
+    max-width: 80%;
+    height: auto;
+    animation: moveUpDown 2s ease-in-out infinite;
+  }
+  
+  .footer-policy {
+    margin-top: 30px;
+  }
+  
+  /* Keyframe animation for the up-and-down effect */
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .privacy-wrapper {
+      height: 350px;
+    }
+  
+    .privacy-heading {
+      font-size: 2.7rem;
+    }
+  
+    .privacy-image {
+      max-width: 70%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .privacy-wrapper {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+      padding: 15px;
+    }
+  
+    .privacy-left,
+    .privacy-right {
+      flex: none;
+      width: 100%;
+      height: auto;
+    }
+  
+    .privacy-heading {
+      font-size: 2rem;
+    }
+  
+    .privacy-image {
+      max-width: 60%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .privacy-wrapper {
+      flex-direction: column;
+      padding: 10px;
+      height: auto;
+    }
+  
+    .privacy-heading {
+      font-size: 1.8rem;
+    }
+  
+    .privacy-image {
+      max-width: 90%;
+    }
+  
+    .footer-policy {
+      margin-top: 20px;
+    }
+  }
+  
