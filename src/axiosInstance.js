@@ -1,7 +1,7 @@
 import axios from "axios";
-
+import constant from './contsant';
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: constant.baseURL,
 });
 
 // Request interceptor to add token to headers

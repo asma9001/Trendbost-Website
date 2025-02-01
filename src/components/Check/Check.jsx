@@ -19,9 +19,10 @@ const Check = () => {
     followers,
     liveAudience,
   } = location.state || {};
-
-  const paymentDetails = userInfo?.paymentMethods?.[0]?.paymentDetails || {};
   console.log(filteredPlans);
+  console.log(plan);
+  const paymentDetails = userInfo?.paymentMethods?.[0]?.paymentDetails || {};
+
   const calculateTotalPrice = () => {
     let planPrice = 0;
     if (type === "Customized" && filteredPlans && filteredPlans.length > 0) {
@@ -36,18 +37,21 @@ const Check = () => {
     return planPrice;
   };
   console.log(userInfo);
+
   const totalPrice = calculateTotalPrice();
   console.log(totalPrice);
   const handleProceed = async () => {
     const orderData = {
-      platform_Name: platform,
+      platform_Name:
+        type === "Customized" ? filteredPlans[0].platform_Name : platform,
       planType:
         type === "Customized" ? filteredPlans[0].planType : plan.planType,
       planName: type === "Customized" ? "Customized" : plan.planName,
       planPrice: totalPrice,
       transactionId: "TX1",
       userId: userInfo?._id,
-      subscriptionId: type === "Customized" ? filteredPlans[0]._id : plan._id,
+      subscriptionId: type !== "Customized" ? plan?._id : "",
+      customizedPlanId: type === "Customized" ? filteredPlans[0]?._id : "",
       paymentMethod: selectedMethod,
       paymentInfo: {
         paypalId: paymentDetails?.paypalId || "",
@@ -57,6 +61,11 @@ const Check = () => {
         cardholderName: paymentDetails?.cardholderName || "",
         walletId: paymentDetails?.walletId || "",
       },
+      ...(type === "Customized" && {
+        likes: likes,
+        comments: comments,
+        followers: followers,
+      }),
     };
 
     console.log("Order data:", orderData);

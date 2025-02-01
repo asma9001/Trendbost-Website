@@ -48,7 +48,7 @@ const UDash = ({ platform }) => {
     const getUserOrderDetails = async () => {
       try {
         const response = await axiosInstance.get(`/userOrderDetails/${userId}`);
-        console.log(response.data);
+       
         setGetUserOrder(response.data);
       } catch (error) {
         console.error("Error fetching order details", error);
@@ -61,7 +61,7 @@ const UDash = ({ platform }) => {
     const getPurchaseHistory = async () => {
       try {
         const response = await axiosInstance.get(`/userSubscribe/${userId}`);
-        console.log(response.data);
+  
         setPurchaseHistory(response.data);
       } catch (error) {
         console.error("Error fetching order details", error);
@@ -100,7 +100,7 @@ const UDash = ({ platform }) => {
         const response = await axiosInstance.get(
           `/subscriptionPlans/${platform}`
         );
-        console.log(response.data);
+       
         setSubscriptionPlans(response.data);
         setFilteredPlans(
           response.data.filter((plan) => plan.planType === "monthly")

@@ -46,6 +46,7 @@ const CustomizedP = () => {
   };
 
   const handleGenerateClick = () => {
+    console.log(filteredPlans);
     navigate("/payment", {
       state: {
         platform,

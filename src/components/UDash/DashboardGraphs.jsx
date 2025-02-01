@@ -56,7 +56,7 @@ const DashboardGraphs = () => {
       try {
         const response = await axiosInstance.get(`/userSubscribe/${userId}`);
         setSubscription(response.data);
-        console.log("Fetched subscription data:", response.data); // Debugging statement
+     
       } catch (error) {
         console.error("Error fetching subscription data", error);
       }
@@ -64,8 +64,9 @@ const DashboardGraphs = () => {
 
     getUserSubscription();
   }, [userId]);
-  console.log(subscription);
+
   useEffect(() => {
+ 
     const updatedUserData = {
       Facebook: {
         likes: 0,
@@ -95,12 +96,19 @@ const DashboardGraphs = () => {
     };
 
     subscription.forEach((sub) => {
-      const subscriptionId = sub.subscriptionId;
+      const subscriptionId = sub.subscriptionId || sub.customizePlanId;
       if (!subscriptionId) {
-        return; // Skip if subscriptionId is null or undefined
+        return;
       }
-      const { platform, likes, comments, followers, live_audience, planName } =
-        subscriptionId;
+      const {
+        platform,
+        platform_Name,
+        likes,
+        comments,
+        followers,
+        live_audience,
+        planName,
+      } = subscriptionId;
       const {
         consumedLikes,
         consumedComments,
@@ -108,14 +116,16 @@ const DashboardGraphs = () => {
         consumedAudience,
       } = sub;
 
-      if (sub.status === "Active" && updatedUserData[platform]) {
-        if (platform === "Tiktok Live") {
-          updatedUserData[platform] = {
+      const platformKey = platform || platform_Name;
+
+      if (sub.status === "Active" && updatedUserData[platformKey]) {
+        if (platformKey === "Tiktok Live") {
+          updatedUserData[platformKey] = {
             liveAudience: consumedAudience || 0,
             planName: planName,
           };
         } else {
-          updatedUserData[platform] = {
+          updatedUserData[platformKey] = {
             likes: consumedLikes,
             comments: consumedComments,
             followers: consumedFollowers,
@@ -126,10 +136,11 @@ const DashboardGraphs = () => {
     });
 
     setUserData(updatedUserData);
-    console.log("Updated user data:", updatedUserData); // Debugging statement
+
   }, [subscription]);
 
   const handleDetailClick = (platform) => {
+    console.log(platform);
     setSelectedPlatform(platform);
     const platformData = userData[platform];
     if (platform === "Tiktok Live") {
@@ -146,7 +157,7 @@ const DashboardGraphs = () => {
   };
 
   const getColorStyle = (value, maxValue) => {
-    if (value === 0 && maxValue === 0) {
+    if (value === 0) {
       return {
         pathColor: "#d6d6d6",
         textColor: "#4A4A4A",
@@ -158,7 +169,7 @@ const DashboardGraphs = () => {
       };
     } else {
       return {
-        pathColor: `rgba(105, 56, 243, 0.4), ${value / maxValue})`,
+        pathColor: `rgba(105, 56, 243, ${value / maxValue})`,
         textColor: "#4A4A4A",
       };
     }
@@ -183,12 +194,14 @@ const DashboardGraphs = () => {
     const totalValue = userData[platform][type] + newValue;
 
     const limits = subscription.reduce((acc, plan) => {
-      if (plan.subscriptionId) {
-        acc[plan.subscriptionId.platform] = {
-          likes: plan.subscriptionId.likes,
-          comments: plan.subscriptionId.comments,
-          followers: plan.subscriptionId.followers,
-          live_audience: plan.subscriptionId.live_audience || 0,
+      console.log(plan);
+      const currentPlan = plan.subscriptionId || plan.customizePlanId;
+      if (currentPlan) {
+        acc[currentPlan.platform || currentPlan.platform_Name] = {
+          likes: currentPlan.likes,
+          comments: currentPlan.comments,
+          followers: currentPlan.followers,
+          live_audience: currentPlan.live_audience || 0,
         };
       }
       return acc;
@@ -196,7 +209,7 @@ const DashboardGraphs = () => {
 
     const platformLimits = limits[platform];
 
-    if (totalValue > platformLimits[type]) {
+    if (platformLimits && totalValue > platformLimits[type]) {
       toast.error(
         `Please upgrade your plan to exceed the limit of ${platformLimits[type]} ${type}`
       );
@@ -218,15 +231,23 @@ const DashboardGraphs = () => {
   const handleProceed = async () => {
     const platform = selectedPlatform;
     const newValue = inputData[formType];
+    const userId = localStorage.getItem("userId");
 
     try {
       const subscriptionData = subscription.find(
-        (sub) => sub.subscriptionId && sub.subscriptionId.platform === platform
+        (sub) =>
+          (sub.subscriptionId && sub.subscriptionId.platform === platform) ||
+          (sub.customizePlanId &&
+            sub.customizePlanId.platform_Name === platform)
       );
 
+      if (!subscriptionData) {
+        toast.error(`No active subscription found for ${platform}`);
+        return;
+      }
+
       const payload = {
-        userId: localStorage.getItem("userId"),
-        subscriptionId: subscriptionData?.subscriptionId._id,
+        userId,
         consumedLikes: formType === "likes" ? newValue : 0,
         consumedComments: formType === "comments" ? newValue : 0,
         consumedFollowers: formType === "followers" ? newValue : 0,
@@ -234,6 +255,12 @@ const DashboardGraphs = () => {
         postLink:
           formType === "liveAudience" ? urlInput.liveLink : urlInput.postLink,
       };
+
+      if (subscriptionData.subscriptionId) {
+        payload.subscriptionId = subscriptionData.subscriptionId._id;
+      } else if (subscriptionData.customizePlanId) {
+        payload.customizePlanId = subscriptionData.customizePlanId._id;
+      }
 
       console.log("Payload:", payload);
 
@@ -243,7 +270,6 @@ const DashboardGraphs = () => {
         `Successfully updated ${formType} consumption for ${platform}`
       );
 
-      // Update userData state after successful API call
       setUserData((prevState) => ({
         ...prevState,
         [platform]: {
@@ -254,12 +280,16 @@ const DashboardGraphs = () => {
 
       setShowForm(false);
       setFormType(null);
+      setSelectedPlatform(null);
     } catch (error) {
+      console.log(error);
+
       toast.error(
         `Failed to update ${formType} consumption for ${platform}: ${error.message}`
       );
     }
   };
+
   const chartStyle = {
     width: "100px",
     height: "100px",
@@ -275,28 +305,26 @@ const DashboardGraphs = () => {
         {Object.keys(userData).map((platform) => {
           const platformData = userData[platform];
           if (!platformData) {
-            return null; // Skip rendering if platformData is undefined
+            return null;
           }
 
           const platformSubscription = subscription.find(
             (sub) =>
-              sub.subscriptionId &&
-              sub.subscriptionId.platform === platform &&
-              sub.status === "Active"
+              (sub.status === "Consumed" || sub.status === "Active") &&
+              ((sub.subscriptionId &&
+                sub.subscriptionId.platform === platform) ||
+                (sub.customizePlanId &&
+                  sub.customizePlanId.platform_Name === platform))
           );
-          console.log(platformSubscription);
-          const totalLikes = platformSubscription
-            ? platformSubscription.subscriptionId.likes
-            : 0;
-          const totalComments = platformSubscription
-            ? platformSubscription.subscriptionId.comments
-            : 0;
-          const totalFollowers = platformSubscription
-            ? platformSubscription.subscriptionId.followers
-            : 0;
-          const totalAudience = platformSubscription
-            ? platformSubscription.subscriptionId.live_audience || 0
-            : 0;
+
+          const plan =
+            platformSubscription?.subscriptionId ||
+            platformSubscription?.customizePlanId;
+
+          const totalLikes = plan ? plan.likes : 0;
+          const totalComments = plan ? plan.comments : 0;
+          const totalFollowers = plan ? plan.followers : 0;
+          const totalAudience = plan ? plan.live_audience || 0 : 0;
 
           const consumedLikes = platformSubscription
             ? platformSubscription.consumedLikes
@@ -311,9 +339,8 @@ const DashboardGraphs = () => {
             ? platformSubscription.consumedAudience
             : 0;
 
-          const planName = platformSubscription
-            ? platformSubscription.subscriptionId.planName
-            : "Not Subscribed";
+          const planName = plan ? plan.planName : "Not Subscribed";
+          const status = platformData.status;
 
           return (
             <div
@@ -355,9 +382,21 @@ const DashboardGraphs = () => {
                         maxValue={totalLikes}
                         text={`${consumedLikes}/${totalLikes}`}
                         strokeWidth={20}
-                        styles={buildStyles(
-                          getColorStyle(consumedLikes, totalLikes)
-                        )}
+                        styles={buildStyles({
+                          ...getColorStyle(consumedLikes, totalLikes),
+                          textSize: "16px",
+                          fontWeight: "bold",
+                          pathColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedLikes, totalLikes)
+                                  .pathColor,
+                          textColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedLikes, totalLikes)
+                                  .textColor,
+                        })}
                       />
                       <p className="dashboard-graphs-chart-label">Likes</p>
                     </div>
@@ -370,9 +409,21 @@ const DashboardGraphs = () => {
                         maxValue={totalComments}
                         text={`${consumedComments}/${totalComments}`}
                         strokeWidth={20}
-                        styles={buildStyles(
-                          getColorStyle(consumedComments, totalComments)
-                        )}
+                        styles={buildStyles({
+                          ...getColorStyle(consumedComments, totalComments),
+                          textSize: "16px",
+                          fontWeight: "bold",
+                          pathColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedComments, totalComments)
+                                  .pathColor,
+                          textColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedComments, totalComments)
+                                  .textColor,
+                        })}
                       />
                       <p className="dashboard-graphs-chart-label">Comments</p>
                     </div>
@@ -385,9 +436,21 @@ const DashboardGraphs = () => {
                         maxValue={totalFollowers}
                         text={`${consumedFollowers}/${totalFollowers}`}
                         strokeWidth={20}
-                        styles={buildStyles(
-                          getColorStyle(consumedFollowers, totalFollowers)
-                        )}
+                        styles={buildStyles({
+                          ...getColorStyle(consumedFollowers, totalFollowers),
+                          textSize: "16px",
+                          fontWeight: "bold",
+                          pathColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedFollowers, totalFollowers)
+                                  .pathColor,
+                          textColor:
+                            status === "Consumed"
+                              ? "rgb(105, 56, 243)"
+                              : getColorStyle(consumedFollowers, totalFollowers)
+                                  .textColor,
+                        })}
                       />
                       <p className="dashboard-graphs-chart-label">Followers</p>
                     </div>
@@ -403,9 +466,21 @@ const DashboardGraphs = () => {
                       maxValue={totalAudience}
                       text={`${consumedAudience}/${totalAudience}`}
                       strokeWidth={20}
-                      styles={buildStyles(
-                        getColorStyle(consumedAudience, totalAudience)
-                      )}
+                      styles={buildStyles({
+                        ...getColorStyle(consumedAudience, totalAudience),
+                        textSize: "16px",
+                        fontWeight: "bold",
+                        pathColor:
+                          status === "Consumed"
+                            ? "rgb(105, 56, 243)"
+                            : getColorStyle(consumedAudience, totalAudience)
+                                .pathColor,
+                        textColor:
+                          status === "Consumed"
+                            ? "rgb(105, 56, 243)"
+                            : getColorStyle(consumedAudience, totalAudience)
+                                .textColor,
+                      })}
                     />
                     <p className="dashboard-graphs-chart-label">
                       Live Audience
@@ -479,26 +554,24 @@ const DashboardGraphs = () => {
     if (!selectedPlatform) return null;
 
     const platformData = userData[selectedPlatform];
-
+    console.log(subscription);
     const platformSubscription = subscription.find(
       (sub) =>
-        sub.subscriptionId &&
-        sub.subscriptionId.platform === selectedPlatform &&
+        (sub.subscriptionId || sub.customizePlanId) &&
+        (sub.subscriptionId?.platform === selectedPlatform ||
+          sub.customizePlanId?.platform_Name === selectedPlatform) &&
         sub.status === "Active"
     );
 
-    if (!platformSubscription) {
-      return <div>No subscription data available</div>;
-    }
+    const plan =
+      platformSubscription?.subscriptionId ||
+      platformSubscription?.customizePlanId;
 
-    const totalLikes = platformSubscription.subscriptionId.likes || 0;
-    const totalComments = platformSubscription.subscriptionId.comments || 0;
-    const totalFollowers = platformSubscription.subscriptionId.followers || 0;
-
+    const totalLikes = plan ? plan.likes || 0 : 0;
+    const totalComments = plan ? plan.comments || 0 : 0;
+    const totalFollowers = plan ? plan.followers || 0 : 0;
     const totalAudience =
-      selectedPlatform === "Tiktok Live" && platformSubscription
-        ? platformSubscription.subscriptionId.live_audience || 0
-        : 0;
+      selectedPlatform === "Tiktok Live" && plan ? plan.live_audience || 0 : 0;
 
     return (
       <div className="dashboard-graphs-detail">
