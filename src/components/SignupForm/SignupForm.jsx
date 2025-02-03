@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignupForm.css";
 import signupImage from "./signup.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
+import axiosInstance from "../../axiosInstance.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -45,8 +45,8 @@ function SignupForm() {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/userAuth/register",
+      const response = await axiosInstance.post(
+        "/userAuth/register",
         userData
       );
 
