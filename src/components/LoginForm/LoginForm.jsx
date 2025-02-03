@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import loginImage from "./login.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../axiosInstance.js";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 
@@ -33,8 +33,8 @@ function LoginForm() {
 
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/userAuth/login",
+      const response = await axiosInstance.post(
+        "/userAuth/login",
         {
           email,
           password,
