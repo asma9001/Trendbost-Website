@@ -45,19 +45,45 @@ const CustomizedP = () => {
     setFilteredPlans(filtered);
   };
 
-  const handleGenerateClick = () => {
-    console.log(filteredPlans);
-    navigate("/payment", {
-      state: {
+  const handleGenerateClick = async () => {
+    try {
+      // Get the current selected plan
+      const selectedPlan = filteredPlans[0];
+
+      // Calculate the price based on the number of likes, comments, followers, and live audience
+      const price = (likes * selectedPlan.likesPrice) + 
+                    (comments * selectedPlan.commentsPrice) + 
+                    (reactions * selectedPlan.followersPrice) + 
+                    (liveAudience * selectedPlan.liveAudiencePrice);
+
+      const subscriptionData = {
         platform,
-        filteredPlans,
-        type,
+        planType: isYearly ? "yearly" : "monthly",
+        planName: "Customized",
+        price,
         likes,
         comments,
         followers: reactions,
         liveAudience,
-      },
-    });
+      };
+
+      const response = await axiosInstance.post("/subscriptions/custom", subscriptionData);
+      toast.success("Subscription created successfully");
+
+      navigate("/payment", {
+        state: {
+          platform,
+          filteredPlans,
+          type,
+          likes,
+          comments,
+          followers: reactions,
+          liveAudience,
+        },
+      });
+    } catch (error) {
+      toast.error("Error creating subscription");
+    }
   };
 
   return (
