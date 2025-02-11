@@ -52,6 +52,9 @@ const Check = () => {
       userId: userInfo?._id,
       subscriptionId: type !== "Customized" ? plan?._id : "",
       customizedPlanId: type === "Customized" ? filteredPlans[0]?._id : "",
+      likes:likes,
+      comments:comments,
+      followers:followers,
       paymentMethod: selectedMethod,
       paymentInfo: {
         paypalId: paymentDetails?.paypalId || "",
