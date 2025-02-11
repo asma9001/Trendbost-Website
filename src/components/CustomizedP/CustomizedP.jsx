@@ -42,7 +42,7 @@ const CustomizedP = () => {
     setIsYearly(type === "yearly");
     const filtered = getCustomizePlans.filter((plan) => plan.planType === type);
     console.log(filtered);
-    setFilteredPlans(filtered);
+    setFilteredPlans(filtered); 
   };
 
   const handleGenerateClick = async () => {
