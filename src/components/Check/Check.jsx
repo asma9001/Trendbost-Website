@@ -55,7 +55,7 @@ const Check = () => {
       likes:likes,
       comments:comments,
       followers:followers,
-      liveAudience:liveAudience,
+      liveAudience:liveAudience, 
       paymentMethod: selectedMethod,
       paymentInfo: {
         paypalId: paymentDetails?.paypalId || "",
