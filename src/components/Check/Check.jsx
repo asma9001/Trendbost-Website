@@ -61,15 +61,8 @@ const Check = () => {
         cardholderName: paymentDetails?.cardholderName || "",
         walletId: paymentDetails?.walletId || "",
       },
-      ...(type === "Customized" && {
-        likes: likes,
-        comments: comments,
-        followers: followers,
-      }),
+    
     };
-
-    console.log("Order data:", orderData);
-
     try {
       const response = await axiosInstance.post("/orders/", orderData);
 
