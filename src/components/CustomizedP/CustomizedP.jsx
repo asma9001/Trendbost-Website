@@ -56,7 +56,7 @@ const CustomizedP = () => {
     }
     try {
       const response = await axiosInstance.post(
-        "http://localhost:5000/api/customSubscription/",
+        "/customSubscription/",
         {
           userId: userId,
           platform,
