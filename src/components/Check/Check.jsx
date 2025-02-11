@@ -8,6 +8,7 @@ const Check = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const {
+    orderId,
     userInfo,
     selectedMethod,
     plan,
@@ -19,8 +20,7 @@ const Check = () => {
     followers,
     liveAudience,
   } = location.state || {};
-  console.log(filteredPlans);
-  console.log(plan);
+  console.log("orderid", orderId);
   const paymentDetails = userInfo?.paymentMethods?.[0]?.paymentDetails || {};
 
   const calculateTotalPrice = () => {
@@ -36,26 +36,17 @@ const Check = () => {
     }
     return planPrice;
   };
-  console.log(userInfo);
-
+  console.log(type);
   const totalPrice = calculateTotalPrice();
-  console.log(totalPrice);
+
   const handleProceed = async () => {
     const orderData = {
-      platform_Name:
-        type === "Customized" ? filteredPlans[0].platform_Name : platform,
-      planType:
-        type === "Customized" ? filteredPlans[0].planType : plan.planType,
-      planName: type === "Customized" ? "Customized" : plan.planName,
-      planPrice: totalPrice,
-      transactionId: "TX1",
       userId: userInfo?._id,
-      subscriptionId: type !== "Customized" ? plan?._id : "",
-      customizedPlanId: type === "Customized" ? filteredPlans[0]?._id : "",
-      likes:likes,
-      comments:comments,
-      followers:followers,
-      liveAudience:liveAudience, 
+      subscriptionId: type === "Customized" ? orderId : plan?._id,
+      subscriptionModel:
+        type === "Customized" ? "CustomSubscription" : "Subscription",
+      transactionId: "TX1",
+      orderStatus: "Pending",
       paymentMethod: selectedMethod,
       paymentInfo: {
         paypalId: paymentDetails?.paypalId || "",
@@ -65,15 +56,20 @@ const Check = () => {
         cardholderName: paymentDetails?.cardholderName || "",
         walletId: paymentDetails?.walletId || "",
       },
-    
+      planPrice: totalPrice,
+      planName: type === "Customized" ? "Customized" : plan.planName,
+      likes,
+      comments,
+      followers,
+      liveAudience,
     };
+
     try {
       const response = await axiosInstance.post("/orders/", orderData);
 
       if (response.status === 201) {
         navigate("/pop-up", { state: { platform } });
       } else {
-        navigate("/pop-up", { state: { platform } });
         console.error("Failed to create order:", response.data);
       }
     } catch (error) {

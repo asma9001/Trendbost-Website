@@ -21,6 +21,7 @@ const PMethod = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const {
+    orderId,
     plan,
     platform,
     filteredPlans,
@@ -30,7 +31,7 @@ const PMethod = () => {
     followers,
     liveAudience,
   } = location.state;
-
+console.log("id",orderId);
   useEffect(() => {
     const fetchPaymentMethods = async () => {
       const userId = localStorage.getItem("userId");
@@ -43,7 +44,7 @@ const PMethod = () => {
 
         if (methods.length > 0) {
           setSelectedMethod(methods[0].paymentMethod);
-          setOpenSection(methods[0].paymentMethod); 
+          setOpenSection(methods[0].paymentMethod);
         }
 
         setUserInfo(response.data.user);
@@ -68,6 +69,7 @@ const PMethod = () => {
 
     navigate("/checkout-page", {
       state: {
+        orderId,
         selectedMethod,
         userInfo,
         plan,

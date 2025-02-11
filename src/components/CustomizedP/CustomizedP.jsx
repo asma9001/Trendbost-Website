@@ -4,7 +4,7 @@ import "./CustomizedP.css";
 import { RiUserFollowLine } from "react-icons/ri";
 import axiosInstance from "../../axiosInstance.js";
 import toast from "react-hot-toast";
-
+import axios from "axios";
 const CustomizedP = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const CustomizedP = () => {
   const [isYearly, setIsYearly] = useState(false);
 
   const { platform, type } = location.state;
-
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     const fetchPlans = async () => {
       try {
@@ -42,21 +42,52 @@ const CustomizedP = () => {
     setIsYearly(type === "yearly");
     const filtered = getCustomizePlans.filter((plan) => plan.planType === type);
     console.log(filtered);
-    setFilteredPlans(filtered); 
+    setFilteredPlans(filtered);
   };
 
   const handleGenerateClick = async () => {
-      navigate("/payment", {
-        state: {
+    if (
+      (platform === "TikTok Live" && liveAudience === 0) ||
+      (platform !== "TikTok Live" &&
+        (likes === 0 || comments === 0 || reactions === 0))
+    ) {
+      toast.error("Please select values for likes, comments, and followers");
+      return;
+    }
+    try {
+      const response = await axiosInstance.post(
+        "http://localhost:5000/api/customSubscription/",
+        {
+          userId: userId,
           platform,
-          filteredPlans,
-          type,
+          planType: isYearly ? "yearly" : "monthly",
+
           likes,
           comments,
           followers: reactions,
+          live_audience: liveAudience,
+        }
+      );
+
+      const { data } = response;
+
+      navigate("/payment", {
+        state: {
+          orderId: data._id,
+          platform,
+          subscriptionModel: "CustomSubscriptionPlan",
+          type,
+          likes,
+          filteredPlans,
+          comments,
+          followers: reactions,
           liveAudience,
+          totalAmount: data.totalAmount,
         },
       });
+    } catch (error) {
+      toast.error("Error generating custom plan order");
+    }
   };
 
   return (
