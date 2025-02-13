@@ -145,7 +145,7 @@ const UDash = ({ platform }) => {
       }
 
       const response = await axiosInstance.put(
-        `http://localhost:5000/api/userProfileSettings/${userId}`,
+        `/userProfileSettings/${userId}`,
         formData,
         {
           headers: {
